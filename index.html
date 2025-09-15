@@ -10,660 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2b5876;
-            --secondary-color: #4e4376;
-            --accent-color: #00b4db;
-            --text-color: #333;
-            --light-color: #f8f9fa;
-            --white: #fff;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            --gradient-hover: linear-gradient(135deg, #3a6d8f 0%, #5d4f85 100%);
-            
-            /* Dark mode colors */
-            --dark-bg: #0f172a;
-            --dark-card: #1e293b;
-            --dark-text: #e2e8f0;
-            --dark-border: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--gradient);
-            color: var(--white);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        nav h1 span {
-            color: var(--accent-color);
-        }
-
-        .nav-tabs {
-            list-style: none;
-            display: flex;
-            gap: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem;
-            border-radius: 50px;
-        }
-
-        .nav-tabs li {
-            position: relative;
-        }
-
-        .nav-tabs li a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            font-weight: 600;
-            display: block;
-        }
-
-        .nav-tabs li a:hover,
-        .nav-tabs li a:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-tabs li a.active {
-            background-color: var(--white);
-            color: var(--primary-color);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 2rem 0;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            position: relative;
-            display: block;
-            text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            width: 100%;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-
-        /* Home Section */
-        #home {
-            text-align: center;
-        }
-
-        .home-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid transparent;
-            background: var(--gradient) border-box;
-            overflow: hidden;
-            margin: 0 auto 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            padding: 3px;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
-
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .intro h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-align: center;
-        }
-
-        .intro p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            text-align: center;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--gradient);
-            color: var(--white);
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            min-width: 180px;
-            text-align: center;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-hover);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 1;
-        }
-
-        .btn:hover::before {
-            opacity: 1;
-        }
-
-        .btn span {
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
-        }
-        /* About Section */
-        #about p {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .skill-tile {
-            background: var(--gradient);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .skill-tile:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Projects Section */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            border-top: 4px solid var(--primary-color);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card img {
-            width: 100%;
-            border-radius: 8px;
-            height: 180px;
-            object-fit: cover;
-            margin-bottom: 1rem;
-        }
-
-        .project-card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .project-card p {
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            color: var(--white);
-            background: var(--gradient);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .project-links a:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .contact-form {
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            width: 100%;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(43, 88, 118, 0.2);
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .contact-form button {
-            padding: 1rem;
-            background: var(--gradient);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .contact-form button:hover {
-            opacity: 0.9;
-            transform: translateY(-3px);
-        }
-
-        .contact-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .contact-card {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            flex: 1 1 300px;
-            max-width: 400px;
-            transition: var(--transition);
-            border-top: 4px solid var(--primary-color);
-            text-align: center;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-card h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .social-icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: var(--transition);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .social-item:hover {
-            color: var(--accent-color);
-            transform: translateY(-5px);
-        }
-
-        .social-item i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .social-item h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: 2rem;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 100;
-            transition: var(--transition);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
-
-        body.dark-mode .project-card,
-        body.dark-mode .contact-card,
-        body.dark-mode .contact-form input,
-        body.dark-mode .contact-form textarea {
-            background-color: var(--dark-card);
-            color: var(--dark-text);
-            border-color: var(--dark-border);
-        }
-
-        body.dark-mode .contact-form input,
-        body.dark-mode .contact-form textarea {
-            background-color: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        body.dark-mode .form-group label {
-            color: var(--accent-color);
-        }
-
-        body.dark-mode .social-item {
-            color: var(--accent-color);
-        }
-
-        body.dark-mode .project-card h3,
-        body.dark-mode .contact-card h3 {
-            color: var(--accent-color);
-        }
-
-        body.dark-mode .intro p {
-            color: var(--dark-text);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-tabs {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--gradient);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 2rem;
-                transition: var(--transition);
-                z-index: 99;
-                border-radius: 0;
-            }
-
-            .nav-tabs.active {
-                left: 0;
-            }
-
-            .nav-tabs li {
-                width: 100%;
-            }
-
-            .nav-tabs li a {
-                text-align: center;
-                padding: 1rem;
-                border-radius: 8px;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-card {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
@@ -674,6 +21,7 @@
                 <ul class="nav-tabs">
                     <li><a href="#home" class="active" data-tab="home">Home</a></li>
                     <li><a href="#about" data-tab="about">About</a></li>
+                    <li><a href="#gallery-section" data-tab="gallery-section">Gallery</a></li>
                     <li><a href="#projects" data-tab="projects">Projects</a></li>
                     <li><a href="#contact" data-tab="contact">Contact</a></li>
                 </ul>
@@ -703,7 +51,8 @@
 
         <section id="about" class="tab-content">
             <h2>About Me</h2>
-            <p>I am currently pursuing BCA under MAKAUT. Passionate about web development, software engineering, and exploring new technologies. I enjoy solving problems and building solutions that make a difference.</p>
+            <p>I am currently pursuing BCA under MAKAUT. Passionate about web development, software engineering, and
+                exploring new technologies. I enjoy solving problems and building solutions that make a difference.</p>
             <div class="skills">
                 <div class="skill-tile">HTML</div>
                 <div class="skill-tile">CSS</div>
@@ -715,14 +64,39 @@
                 <div class="skill-tile">Problem Solving</div>
             </div>
         </section>
+        <section id="gallery-section" class="tab-content">
+            <h2>Image Gallery</h2>
+            <!-- Image Slider -->
+            <div class="image-slider">
+                <!-- Radio Controls -->
+                <div class="slider-controls">
+                    <input type="radio" name="gallery-slider" id="img1" checked>
+                    <input type="radio" name="gallery-slider" id="img2">
+                    <input type="radio" name="gallery-slider" id="img3">
+                </div>
 
+                <!-- Slides -->
+                <div class="slides">
+                    <div class="slide active">
+                        <img src="images/gallery1.jpg" alt="Gallery Image 1">
+                    </div>
+                    <div class="slide"> <!-- Remove "active" from others -->
+                        <img src="images/gallery2.jpg" alt="Gallery Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="images/gallery3.jpg" alt="Gallery Image 3">
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="projects" class="tab-content">
             <h2>My Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <!-- <img src="project1.jpg" alt="Portfolio Website"> -->
                     <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero accusantium recusandae? Fuga vitae ad omnis neque non quidem blanditiis ea porro delectus!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero accusantium recusandae?
+                        Fuga vitae ad omnis neque non quidem blanditiis ea porro delectus!</p>
                     <div class="project-links">
                         <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
@@ -731,7 +105,8 @@
                 <div class="project-card">
                     <!-- <img src="project2.jpg" alt="Number Guessing Game"> -->
                     <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sint maxime eveniet officiis, aliquam pariatur tempora alias atque praesentium ab repudiandae voluptates maiores.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sint maxime eveniet officiis, aliquam
+                        pariatur tempora alias atque praesentium ab repudiandae voluptates maiores.</p>
                     <div class="project-links">
                         <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
@@ -740,7 +115,8 @@
                 <div class="project-card">
                     <!-- <img src="https://via.placeholder.com/400x225" alt="To-Do List App"> -->
                     <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam earum mollitia odit modi illum? Minus id provident minima iusto eum aliquam, at ex!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam earum mollitia odit modi illum?
+                        Minus id provident minima iusto eum aliquam, at ex!</p>
                     <div class="project-links">
                         <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
@@ -801,6 +177,7 @@
             <div class="footer-links">
                 <a href="#home" data-tab="home">Home</a>
                 <a href="#about" data-tab="about">About</a>
+                <a href="#gallery-section" data-tab="gallery-section">Gallery</a>
                 <a href="#projects" data-tab="projects">Projects</a>
                 <a href="#contact" data-tab="contact">Contact</a>
             </div>
@@ -814,20 +191,20 @@
 
     <script>
         // Tab Switching Functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('[data-tab]');
             const tabContents = document.querySelectorAll('.tab-content');
-            
+
             // Function to switch tabs
             function switchTab(tabId) {
                 // Hide all tab contents
                 tabContents.forEach(content => {
                     content.classList.remove('active');
                 });
-                
+
                 // Show selected tab content
                 document.getElementById(tabId).classList.add('active');
-                
+
                 // Update active tab in navigation
                 tabs.forEach(tab => {
                     tab.classList.remove('active');
@@ -835,26 +212,26 @@
                         tab.classList.add('active');
                     }
                 });
-                
+
                 // Close mobile menu if open
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             }
-            
+
             // Add click event to all tabs
             tabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
+                tab.addEventListener('click', function (e) {
                     e.preventDefault();
                     const tabId = this.getAttribute('data-tab');
                     switchTab(tabId);
-                    
+
                     // Update URL hash
                     window.location.hash = tabId;
                 });
             });
-            
+
             // Check URL hash on page load
             if (window.location.hash) {
                 const tabId = window.location.hash.substring(1);
@@ -863,23 +240,23 @@
                 }
             }
         });
-        
+
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-tabs');
-        
+
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+            hamburger.innerHTML = navLinks.classList.contains('active') ?
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
+
         // Dark mode toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
-        
+
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            
+
             if (document.body.classList.contains('dark-mode')) {
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 localStorage.setItem('darkMode', 'enabled');
@@ -888,33 +265,49 @@
                 localStorage.setItem('darkMode', 'disabled');
             }
         });
-        
+
         // Check for saved dark mode preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
-        
+
         // Form submission
         const contactForm = document.getElementById('contactForm');
-        
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            
+
             // Here you would typically send the form data to a server
             // For now, we'll just log it and show an alert
             console.log({ name, email, message });
-            
+
             alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
-            
+
             // Reset form
             contactForm.reset();
         });
+        // Gallery Slider Logic
+        document.querySelectorAll('.slider-controls input').forEach((radio, index) => {
+            radio.addEventListener('change', function () {
+                const slides = document.querySelectorAll('#gallery-section .slide');
+
+                // Remove active class from all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                    slide.style.transitionDelay = '0s'; // Reset delay
+                });
+
+                // Add active class to corresponding slide
+                slides[index].classList.add('active');
+            });
+        });
+
     </script>
 </body>
 
