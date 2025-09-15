@@ -8,7 +8,7 @@
     <meta name="description" content="Portfolio of Pratham, a BCA student and aspiring developer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
@@ -17,7 +17,11 @@
     <header>
         <nav>
             <div class="nav-container">
-                <h1>Pratham<span>.</span></h1>
+                <a href="#home" class="logo-container" data-tab="home">
+                    <!-- ADD YOUR LOGO IMAGE PATH HERE -->
+                    <img class="nav-logo" src="https://avatars.githubusercontent.com/u/44492901?v=4" alt="Pratham's Logo" onerror="this.style.display='none'">
+                    <h1>Pratham<span>.</span></h1>
+                </a>
                 <ul class="nav-tabs">
                     <li><a href="#home" class="active" data-tab="home">Home</a></li>
                     <li><a href="#about" data-tab="about">About</a></li>
@@ -36,14 +40,21 @@
         <section id="home" class="tab-content active">
             <div class="home-container">
                 <div class="profile-pic">
-                    <img src="https://dr460ngeek.vercel.app/asset/img/Watashi.jpeg" alt="Pratham's Profile Picture" />
+                    <img src="https://dr460ngeek.vercel.app/asset/img/Watashi.jpeg" alt="Pratham's Profile Picture"
+                        onerror="this.src='https://via.placeholder.com/200'" />
                 </div>
                 <div class="intro">
                     <h2>Hello, I'm Pratham</h2>
-                    <p>Tech Enthusiast | Lifelong Learner</p>
+                    <div class="typing-text" id="typing-text"></div>
                     <div class="cta-buttons">
-                        <a href="#projects" class="btn" data-tab="projects"><span>View My Work</span></a>
-                        <a href="#contact" class="btn" data-tab="contact"><span>Contact Me</span></a>
+                        <a href="#projects" class="btn" data-tab="projects">
+                            <i class="fas fa-briefcase"></i>
+                            <span>View My Work</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline" data-tab="contact">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Contact Me</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -52,76 +63,163 @@
         <section id="about" class="tab-content">
             <h2>About Me</h2>
             <p>I am currently pursuing BCA from Inspiria Knowledge Campus. Passionate about software engineering and
-                exploring new technologies. I enjoy learning everyday.</p>
+                exploring new technologies. I enjoy learning everyday and challenging myself with new projects.</p>
+
+            <h3 class="skills-title">My Skills</h3>
             <div class="skills">
-                <!-- <div class="skill-tile">HTML</div> -->
-                <!-- <div class="skill-tile">CSS</div> -->
-                <!-- <div class="skill-tile">JavaScript</div> -->
-                <!-- <div class="skill-tile">Python</div> -->
-                <div class="skill-tile">C Programming</div>
-                <div class="skill-tile">Git & GitHub</div>
-                <div class="skill-tile">Linux Administration</div>
-                <div class="skill-tile">Script kiddie</div>
-                <!-- <div class="skill-tile">Responsive Design</div> -->
-                <!-- <div class="skill-tile">Problem Solving</div> -->
+                <div class="skill-tile">
+                    <i class="fas fa-code"></i>
+                    <span>C Programming</span>
+                </div>
+                <div class="skill-tile">
+                    <i class="fab fa-github"></i>
+                    <span>Git & GitHub</span>
+                </div>
+                <div class="skill-tile">
+                    <i class="fab fa-linux"></i>
+                    <span>Linux Administration</span>
+                </div>
+                <div class="skill-tile">
+                    <i class="fas fa-terminal"></i>
+                    <span>Scripting</span>
+                </div>
+                <div class="skill-tile">
+                    <i class="fas fa-server"></i>
+                    <span>System Administration</span>
+                </div>
+                <div class="skill-tile">
+                    <i class="fas fa-database"></i>
+                    <span>Database Management</span>
+                </div>
             </div>
         </section>
+
         <section id="gallery-section" class="tab-content">
             <h2>Image Gallery</h2>
             <!-- Image Slider -->
             <div class="image-slider">
-                <!-- Radio Controls -->
+                <!-- Slides -->
+                <div class="slides">
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery1.jpg" alt="Gallery Image 1">
+                        <div class="slide-overlay">
+                            <h3>Code Development</h3>
+                            <p>Working on innovative projects</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery2.jpg" alt="Gallery Image 2">
+                        <div class="slide-overlay">
+                            <h3>Linux Environment</h3>
+                            <p>Server administration and configuration</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery3.jpg" alt="Gallery Image 3">
+                        <div class="slide-overlay">
+                            <h3>Coding Sessions</h3>
+                            <p>Developing efficient solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="slider-nav">
+                    <button class="slider-nav-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-nav-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Radio Controls - MOVED outside the slider -->
+            <div class="slider-controls-container">
                 <div class="slider-controls">
                     <input type="radio" name="gallery-slider" id="img1" checked>
                     <input type="radio" name="gallery-slider" id="img2">
                     <input type="radio" name="gallery-slider" id="img3">
                 </div>
-
-                <!-- Slides -->
-                <div class="slides">
-                    <div class="slide active">
-                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery1.jpg" alt="Gallery Image 1">
-                    </div>
-                    <div class="slide"> <!-- Remove "active" from others -->
-                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery1.jpg" alt="Gallery Image 2">
-                    </div>
-                    <div class="slide">
-                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/gallery1.jpg" alt="Gallery Image 3">
-                    </div>
-                </div>
             </div>
         </section>
+
+        <!-- Image Modal -->
+        <div class="image-modal" id="imageModal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
         <section id="projects" class="tab-content">
             <h2>My Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project1.jpg" alt="project1">
-                    <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero accusantium recusandae?
-                        Fuga vitae ad omnis neque non quidem blanditiis ea porro delectus!</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project1.jpg" alt="project1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Linux Automation Scripts</h3>
+                        <p>A collection of bash scripts for automating system administration tasks, user management, and
+                            server maintenance.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Bash</span>
+                            <span class="project-tag">Linux</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project2.jpg" alt="project2">
-                    <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea sint maxime eveniet officiis, aliquam
-                        pariatur tempora alias atque praesentium ab repudiandae voluptates maiores.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project2.jpg" alt="project2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Student Database System</h3>
+                        <p>A C-based application for managing student records with features for adding, searching, and
+                            updating information.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">C Programming</span>
+                            <span class="project-tag">File I/O</span>
+                            <span class="project-tag">Data Structures</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project3.jpg" alt="project3">
-                    <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam earum mollitia odit modi illum?
-                        Minus id provident minima iusto eum aliquam, at ex!</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/project3.jpg" alt="project3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Network Monitoring Tool</h3>
+                        <p>A Python-based utility for monitoring network traffic, detecting anomalies, and generating
+                            reports.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Networking</span>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,16 +233,21 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required />
+                        <i class="fas fa-user"></i>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Your Email Address" required />
+                        <i class="fas fa-envelope"></i>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        <i class="fas fa-comment"></i>
                     </div>
-                    <button type="submit">Send Message</button>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
 
                 <div class="contact-cards">
@@ -177,19 +280,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#home" data-tab="home">Home</a>
+                <!-- <a href="#home" data-tab="home">Home</a>
                 <a href="#about" data-tab="about">About</a>
                 <a href="#gallery-section" data-tab="gallery-section">Gallery</a>
                 <a href="#projects" data-tab="projects">Projects</a>
-                <a href="#contact" data-tab="contact">Contact</a>
+                <a href="#contact" data-tab="contact">Contact</a> -->
             </div>
             <p class="copyright">&copy; 2025 Pratham. All rights reserved.</p>
         </div>
     </footer>
 
-    <div class="dark-mode-toggle" id="darkModeToggle">
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
         <i class="fas fa-moon"></i>
-    </div>
+    </button>
 
     <script>
         // Tab Switching Functionality
@@ -220,6 +327,9 @@
                     navLinks.classList.remove('active');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 }
+
+                // Scroll to top when switching tabs
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             // Add click event to all tabs
@@ -285,6 +395,19 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
             // Here you would typically send the form data to a server
             // For now, we'll just log it and show an alert
             console.log({ name, email, message });
@@ -294,22 +417,151 @@
             // Reset form
             contactForm.reset();
         });
-        // Gallery Slider Logic
-        document.querySelectorAll('.slider-controls input').forEach((radio, index) => {
-            radio.addEventListener('change', function () {
-                const slides = document.querySelectorAll('#gallery-section .slide');
 
-                // Remove active class from all slides
-                slides.forEach(slide => {
-                    slide.classList.remove('active');
-                    slide.style.transitionDelay = '0s'; // Reset delay
-                });
+// Gallery Slider
+        const slides = document.querySelectorAll('.slide');
+        const radioButtons = document.querySelectorAll('.slider-controls input');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+        let slideInterval;
 
-                // Add active class to corresponding slide
-                slides[index].classList.add('active');
+        // Function to show a specific slide
+        function showSlide(index) {
+            slides.forEach(slide => slide.style.transform = `translateX(-${index * 100}%)`);
+            radioButtons[index].checked = true;
+            currentSlide = index;
+        }
+
+        // Next slide function
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Previous slide function
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Add event listeners for navigation
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            startSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            startSlider();
+        });
+
+        // Add event listeners for radio buttons
+        radioButtons.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                clearInterval(slideInterval);
+                showSlide(index);
+                startSlider();
             });
         });
 
+        // Start automatic sliding
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Initialize slider
+        startSlider();
+
+        // Pause slider when hovering over it
+        const slider = document.querySelector('.image-slider');
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', startSlider);
+
+        // Image Modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Open modal when clicking on a slide image
+        slides.forEach(slide => {
+            slide.querySelector('img').addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = slide.querySelector('img').src;
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Typing animation
+        const typingText = document.getElementById('typing-text');
+        const texts = [
+            "Tech Enthusiast | Lifelong Learner",
+            "BCA Student | Aspiring Developer",
+            "Linux Admin | C Programmer"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentText = texts[textIndex];
+
+            if (isDeleting) {
+                // Remove characters
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                // Add characters
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            // Check if complete
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 1000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500; // Pause before starting next
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typing animation
+        setTimeout(type, 1000);
     </script>
 </body>
 
