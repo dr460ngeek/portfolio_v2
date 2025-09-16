@@ -11,736 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
-    <style>
-        :root {
-            --primary-color: #2b5876;
-            --secondary-color: #4e4376;
-            --accent-color: #00b4db;
-            --accent-light: #6dd5ed;
-            --text-color: #333;
-            --light-color: #f8f9fa;
-            --white: #fff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
-            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            --gradient-hover: linear-gradient(135deg, #3a6d8f 0%, #5d4f85 100%);
-            --gradient-text: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-
-            /* Dark mode colors */
-            --dark-bg: #0f172a;
-            --dark-card: #1e293b;
-            --dark-text: #e2e8f0;
-            --dark-border: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gradient-hover);
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--gradient);
-            color: var(--white);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
-        .nav-logo {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-
-        .logo-container:hover .nav-logo {
-            transform: scale(1.1) rotate(5deg);
-            border-color: var(--accent-color);
-        }
-
-        nav h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--white);
-        }
-
-        nav h1 span {
-            color: var(--accent-color);
-        }
-
-        .nav-tabs {
-            list-style: none;
-            display: flex;
-            gap: 0.5rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-tabs li {
-            position: relative;
-        }
-
-        .nav-tabs li a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            font-weight: 600;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-tabs li a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-
-        .nav-tabs li a:hover::before {
-            left: 100%;
-        }
-
-        .nav-tabs li a:hover,
-        .nav-tabs li a:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav-tabs li a.active {
-            background-color: var(--white);
-            color: var(--primary-color);
-            box-shadow: var(--shadow);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--white);
-            z-index: 101;
-        }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Blog Header */
-        .blog-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
-        }
-
-        .blog-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .blog-header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-color);
-        }
-
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .blog-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.1);
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .blog-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .blog-card p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            flex-grow: 1;
-        }
-
-        .blog-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-tag {
-            background: rgba(43, 88, 118, 0.1);
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .read-more:hover {
-            color: var(--accent-color);
-            gap: 0.7rem;
-        }
-
-        /* Blog Post */
-        .blog-post {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .post-header {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .post-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .post-meta {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .post-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .post-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        /* Markdown Content Styles */
-        .markdown-content {
-            line-height: 1.8;
-            color: var(--text-color);
-        }
-
-        .markdown-content h1,
-        .markdown-content h2,
-        .markdown-content h3,
-        .markdown-content h4 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .markdown-content h1 {
-            font-size: 2.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-light);
-        }
-
-        .markdown-content h2 {
-            font-size: 1.8rem;
-        }
-
-        .markdown-content h3 {
-            font-size: 1.5rem;
-        }
-
-        .markdown-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .markdown-content a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .markdown-content a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        .markdown-content blockquote {
-            border-left: 4px solid var(--accent-color);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: #666;
-        }
-
-        .markdown-content code {
-            background-color: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-
-        .markdown-content pre {
-            background-color: #2d2d2d;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow: auto;
-            margin: 1.5rem 0;
-        }
-
-        .markdown-content pre code {
-            background: none;
-            padding: 0;
-            color: #f8f8f2;
-        }
-
-        .markdown-content ul,
-        .markdown-content ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .markdown-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .markdown-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .markdown-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-
-        .markdown-content th,
-        .markdown-content td {
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-        }
-
-        .markdown-content th {
-            background-color: #f4f4f4;
-            font-weight: 600;
-        }
-
-        .markdown-content hr {
-            border: none;
-            height: 2px;
-            background: var(--gradient);
-            margin: 2rem 0;
-        }
-
-        /* Back to Blog Link */
-        .back-to-blog {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .back-to-blog:hover {
-            color: var(--accent-color);
-            gap: 0.7rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-light);
-            transform: translateY(-2px);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 1rem;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            background: var(--gradient);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 99;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            border: none;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 100;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-hover);
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
-
-        body.dark-mode .blog-card,
-        body.dark-mode .blog-post,
-        body.dark-mode .markdown-content code {
-            background-color: var(--dark-card);
-            color: var(--dark-text);
-        }
-
-        body.dark-mode .blog-card h2,
-        body.dark-mode .post-header h1,
-        body.dark-mode .markdown-content h1,
-        body.dark-mode .markdown-content h2,
-        body.dark-mode .markdown-content h3,
-        body.dark-mode .markdown-content h4 {
-            color: var(--accent-light);
-        }
-
-        body.dark-mode .blog-card p,
-        body.dark-mode .markdown-content,
-        body.dark-mode .blog-meta,
-        body.dark-mode .post-meta {
-            color: #cbd5e1;
-        }
-
-        body.dark-mode .blog-tag {
-            background: rgba(100, 200, 255, 0.1);
-            color: var(--accent-light);
-        }
-
-        body.dark-mode .markdown-content code {
-            background-color: #374151;
-        }
-
-        body.dark-mode .markdown-content th {
-            background-color: #374151;
-        }
-
-        body.dark-mode .markdown-content td {
-            border-color: #4b5563;
-        }
-
-        body.dark-mode .read-more,
-        body.dark-mode .back-to-blog {
-            color: var(--accent-light);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .blog-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-tabs {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--gradient);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 2rem;
-                transition: var(--transition);
-                z-index: 99;
-                border-radius: 0;
-                backdrop-filter: none;
-            }
-
-            .nav-tabs.active {
-                left: 0;
-            }
-
-            .nav-tabs li {
-                width: 100%;
-                margin: 0.5rem 0;
-            }
-
-            .nav-tabs li a {
-                text-align: center;
-                padding: 1rem;
-                border-radius: 8px;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .blog-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .blog-post {
-                padding: 1.5rem;
-            }
-
-            .post-header h1 {
-                font-size: 2rem;
-            }
-
-            .post-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .logo-container h1 {
-                font-size: 1.5rem;
-            }
-            
-            .nav-logo {
-                width: 2rem;
-                height: 2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            main {
-                padding: 1rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .blog-header h1 {
-                font-size: 2rem;
-            }
-            
-            .logo-container h1 {
-                font-size: 1.3rem;
-            }
-            
-            .nav-logo {
-                width: 1.8rem;
-                height: 1.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/styles_blog.css">
 </head>
 
 <body>
@@ -749,16 +20,17 @@
             <div class="nav-container">
                 <a href="index.html" class="logo-container">
                     <!-- ADD YOUR LOGO IMAGE PATH HERE -->
-                    <img class="nav-logo" src="path/to/your/logo.jpg" alt="Pratham's Logo" onerror="this.style.display='none'">
+                    <img class="nav-logo" src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/logo.png" alt="Pratham's Logo"
+                        onerror="this.style.display='none'">
                     <h1>Pratham<span>.</span></h1>
                 </a>
                 <ul class="nav-tabs">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#gallery-section">Gallery</a></li>
+                    <!-- <li><a href="index.html#gallery-section">Gallery</a></li> -->
+                    <li><a href="./blog.html" class="active">Blog</a></li>
                     <li><a href="index.html#projects">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="blog.html" class="active">Blogs</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -775,109 +47,52 @@
                 <p>Thoughts, tutorials, and insights on technology, programming, and my learning journey</p>
             </div>
 
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="C Programming">
-                    </div>
-                    <div class="blog-content">
-                        <h2>Getting with Vim/Neovim</h2>
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                            <span><i class="far fa-clock"></i> 5 min read</span>
-                        </div>
-                        <p>Vim and Neovim are powerful, highly configurable text editors widely used by programmers and advanced users, particularly in Unix-like environments. Both are descendants of the original Vi editor.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Vim</span>
-                            <span class="blog-tag">Neovim</span>
-                            <span class="blog-tag">Beginners</span>
-                        </div>
-                        <a href="#post1" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Linux Tips">
-                    </div>
-                    <div class="blog-content">
-                        <h2>10 Essential Linux Commands for Developers</h2>
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> July 3, 2023</span>
-                            <span><i class="far fa-clock"></i> 7 min read</span>
-                        </div>
-                        <p>Discover the most useful Linux commands that every developer should know to improve productivity and efficiency in their workflow.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Linux</span>
-                            <span class="blog-tag">Terminal</span>
-                            <span class="blog-tag">Productivity</span>
-                        </div>
-                        <a href="#post2" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80" alt="Git Version Control">
-                    </div>
-                    <div class="blog-content">
-                        <h2>Mastering Git and GitHub</h2>
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> August 12, 2023</span>
-                            <span><i class="far fa-clock"></i> 10 min read</span>
-                        </div>
-                        <p>A comprehensive guide to version control with Git and how to effectively use GitHub for collaboration and project management.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Git</span>
-                            <span class="blog-tag">GitHub</span>
-                            <span class="blog-tag">Version Control</span>
-                        </div>
-                        <a href="#post3" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+            <div class="blog-grid" id="blog-posts-container">
+                <!-- Blog posts will be loaded here dynamically -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
             </div>
         </section>
 
         <!-- Blog Post Detail View (Initially Hidden) -->
         <section id="blog-detail" style="display: none;">
             <a href="blog.html" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to Blog</a>
-            
+
             <article class="blog-post">
                 <div class="post-header">
-                    <h1 id="post-title">Getting Started with C Programming</h1>
-                    <div class="post-meta">
-                        <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                        <span><i class="far fa-clock"></i> 5 min read</span>
+                    <h1 id="post-title">Loading Post...</h1>
+                    <div class="post-meta" id="post-meta">
+                        <span><i class="far fa-calendar"></i> <span id="post-date">Loading...</span></span>
+                        <span><i class="far fa-clock"></i> <span id="post-read-time">Loading...</span></span>
                         <span><i class="far fa-user"></i> Pratham</span>
                     </div>
-                    <div class="post-tags">
-                        <span class="blog-tag">C Programming</span>
-                        <span class="blog-tag">Beginners</span>
+                    <div class="post-tags" id="post-tags">
+                        <!-- Tags will be loaded here -->
                     </div>
                 </div>
-                
+
                 <div class="markdown-content" id="post-content">
-                    <!-- Markdown content will be rendered here -->
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
                 </div>
             </article>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <!-- <div class="footer-links">
+        <!-- <div class="footer-content">
+            <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="index.html#about">About</a>
                 <a href="index.html#gallery-section">Gallery</a>
                 <a href="index.html#projects">Projects</a>
                 <a href="index.html#contact">Contact</a>
                 <a href="blog.html">Blog</a>
-            </div> -->
+            </div>
             <p class="copyright">&copy; 2023 Pratham. All rights reserved.</p>
-        </div>
+        </div> -->
     </footer>
 
     <button class="back-to-top" id="backToTop">
@@ -891,6 +106,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
+        // Configure marked to use highlight.js for code blocks
+        marked.setOptions({
+            highlight: function (code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang }).value;
+                }
+                return hljs.highlightAuto(code).value;
+            }
+        });
+
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-tabs');
@@ -937,594 +162,205 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Configure marked to use highlight.js for code blocks
-        marked.setOptions({
-            highlight: function(code, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    return hljs.highlight(code, { language: lang }).value;
+        // Function to get all markdown files from the markdown folder
+        async function getMarkdownFiles() {
+            try {
+                // In a real implementation, you would fetch this from a server API
+                // For this example, we'll use a predefined list
+                const response = await fetch('markdown/file-list.json');
+                if (!response.ok) {
+                    throw new Error('File list not found');
                 }
-                return hljs.highlightAuto(code).value;
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading markdown file list:', error);
+
+                // Fallback to a default list if the file-list.json doesn't exist
+                return [
+                        {
+                            "id": "Vim/Neovim Basics",
+                            "title": "Vim/Neovim Basics: A Beginner's Guide to Efficient Text Editing",
+                            "date": "Sep 16, 2025",
+                            "readTime": "5 min read",
+                            "tags": ["Vim", "Neovim", "Text Editing", "Efficiency"],
+                            //"image": "images/c-programming.jpg",
+                            "markdownFile": "markdown/VIM-cheatsheet.md"
+                        },
+                        {
+                            "id": "linux-commands",
+                            "title": "Linux Command Line Cheat Sheet: Essential Commands for Everyday Use",
+                            "date": "Sep 16, 2025",
+                            "readTime": "7 min read",
+                            "tags": ["Linux", "Terminal", "Productivity"],
+                            //"image": "images/linux-commands.jpg",
+                            "markdownFile": "markdown/Linux-cheatsheet.md"
+                        },
+                        {
+                            "id": "git-mastery",
+                            "title": "Git Cheat Sheet: Mastering Version Control",
+                            "date": "July 3, 2023",
+                            "readTime": "7 min read",
+                            "tags": ["Git", "D-VCS", "Version Control", "Project Management"],
+                            //"image": "images/linux-commands.jpg",
+                            "markdownFile": "markdown/Git-cheatsheet.md"
+                        }
+                ];
             }
-        });
-
-        // Sample blog posts in Markdown format
-        const blogPosts = {
-            post1: {
-                title: "Getting Started with C Programming",
-                date: "June 15, 2023",
-                readTime: "5 min read",
-                tags: ["C Programming", "Beginners"],
-                content: `
-# Getting Started with C Programming
-
-C is a powerful general-purpose programming language that is excellent for beginners to learn. It can be used to develop software like operating systems, databases, compilers, and more.
-
-## Why Learn C?
-
-- **Foundation for other languages**: Many modern languages like C++, C#, and Java have syntax based on C
-- **Efficiency**: C programs are fast and efficient
-- **Portability**: C code can run on different platforms with minimal changes
-- **Understanding of how computers work**: C gives you low-level access to memory and hardware
-
-## Basic Syntax
-
-Here's a simple "Hello, World!" program in C:
-
-\`\`\`c
-#include <stdio.h>
-
-int main() {
-    printf("Hello, World!");
-    return 0;
-}
-\`\`\`
-
-## Variables and Data Types
-
-C has several basic data types:
-
-- \`int\`: integers
-- \`float\`: floating-point numbers
-- \`double\`: double-precision floating-point numbers
-- \`char\`: characters
-
-\`\`\`c
-int age = 25;
-float height = 5.9;
-char grade = 'A';
-\`\`\`
-
-## Control Structures
-
-### If-Else Statement
-
-\`\`\`c
-if (score >= 90) {
-    printf("Grade: A");
-} else if (score >= 80) {
-    printf("Grade: B");
-} else {
-    printf("Grade: C");
-}
-\`\`\`
-
-### For Loop
-
-\`\`\`c
-for (int i = 0; i < 10; i++) {
-    printf("%d\\n", i);
-}
-\`\`\`
-
-## Functions
-
-Functions allow you to break your code into reusable blocks:
-
-\`\`\`c
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    int result = add(5, 3);
-    printf("Result: %d", result);
-    return 0;
-}
-\`\`\`
-
-## Next Steps
-
-Once you've mastered the basics of C, you can explore:
-
-- Pointers and memory management
-- Data structures (linked lists, trees, etc.)
-- File I/O operations
-- Creating libraries
-
-Remember, practice is key to mastering any programming language. Try solving problems on platforms like HackerRank or LeetCode to improve your skills.
-
-Happy coding!
-                `
-            },
-            post2: {
-                title: "10 Essential Linux Commands for Developers",
-                date: "July 3, 2023",
-                readTime: "7 min read",
-                tags: ["Linux", "Terminal", "Productivity"],
-                content: `
-# 10 Essential Linux Commands for Developers
-
-Linux is the preferred operating system for many developers due to its power, flexibility, and open-source nature. Mastering the command line can significantly boost your productivity.
-
-## 1. ls - List Directory Contents
-
-The \`ls\` command lists files and directories.
-
-\`\`\`bash
-# Basic listing
-ls
-
-# List with details (permissions, owner, size, etc.)
-ls -l
-
-# List all files including hidden ones
-ls -a
-
-# List with human-readable file sizes
-ls -lh
-\`\`\`
-
-## 2. cd - Change Directory
-
-The \`cd\` command changes your current directory.
-
-\`\`\`bash
-# Go to home directory
-cd ~
-
-# Go to root directory
-cd /
-
-# Go up one directory level
-cd ..
-
-# Go to the previous directory
-cd -
-\`\`\`
-
-## 3. pwd - Print Working Directory
-
-Shows the full path of your current directory.
-
-\`\`\`bash
-pwd
-# Output: /home/username/projects
-\`\`\`
-
-## 4. mkdir - Make Directory
-
-Creates a new directory.
-
-\`\`\`bash
-# Create a single directory
-mkdir new_folder
-
-# Create nested directories
-mkdir -p parent/child/grandchild
-\`\`\`
-
-## 5. rm - Remove Files or Directories
-
-Deletes files and directories.
-
-\`\`\`bash
-# Delete a file
-rm file.txt
-
-# Delete a directory and its contents recursively
-rm -r folder_name
-
-# Force delete without confirmation
-rm -rf folder_name
-\`\`\`
-
-> **Warning**: Be careful with \`rm -rf\`, especially as root. It can permanently delete important files.
-
-## 6. cp - Copy Files and Directories
-
-Copies files and directories from one location to another.
-
-\`\`\`bash
-# Copy a file
-cp source.txt destination.txt
-
-# Copy a directory recursively
-cp -r source_dir destination_dir
-\`\`\`
-
-## 7. mv - Move or Rename Files and Directories
-
-Moves or renames files and directories.
-
-\`\`\`bash
-# Rename a file
-mv old_name.txt new_name.txt
-
-# Move a file to a different directory
-mv file.txt /path/to/destination/
-\`\`\`
-
-## 8. grep - Search Text
-
-Searches for patterns in files.
-
-\`\`\`bash
-# Search for "error" in a file
-grep "error" log.txt
-
-# Case-insensitive search
-grep -i "error" log.txt
-
-# Search recursively in all files
-grep -r "function_name" /path/to/code/
-\`\`\`
-
-## 9. chmod - Change File Permissions
-
-Changes the permissions of a file or directory.
-
-\`\`\`bash
-# Give execute permission to the owner
-chmod u+x script.sh
-
-# Give read, write, execute to owner, read and execute to group and others
-chmod 755 script.sh
-\`\`\`
-
-## 10. find - Search for Files
-
-Searches for files in a directory hierarchy.
-
-\`\`\`bash
-# Find all .txt files in the current directory
-find . -name "*.txt"
-
-# Find files modified in the last 7 days
-find . -mtime -7
-
-# Find and delete all .tmp files
-find . -name "*.tmp" -delete
-\`\`\`
-
-## Bonus: Command Combinations
-
-You can combine commands using pipes (\`|\`) to create powerful workflows:
-
-\`\`\`bash
-# Count the number of files in a directory
-ls | wc -l
-
-# Find all .py files containing "import requests"
-find . -name "*.py" -exec grep -l "import requests" {} \\;
-
-# Monitor a log file in real-time
-tail -f application.log | grep "ERROR"
-\`\`\`
-
-Mastering these commands will make you more efficient when working in Linux environments. Practice them regularly to build muscle memory.
-                `
-            },
-            post3: {
-                title: "Mastering Git and GitHub",
-                date: "August 12, 2023",
-                readTime: "10 min read",
-                tags: ["Git", "GitHub", "Version Control"],
-                content: `
-# Mastering Git and GitHub
-
-Git is the most widely used modern version control system, and GitHub is the largest host of Git repositories. Mastering these tools is essential for any developer.
-
-## What is Version Control?
-
-Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. It allows you to:
-
-- Revert files back to a previous state
-- Compare changes over time
-- See who last modified something
-- Recover lost files
-
-## Basic Git Workflow
-
-A typical Git workflow involves these steps:
-
-1. Modify files in your working directory
-2. Stage the changes you want to commit
-3. Commit the changes to your local repository
-4. Push your changes to a remote repository (like GitHub)
-
-## Essential Git Commands
-
-### git init
-
-Initialize a new Git repository:
-
-\`\`\`bash
-git init
-\`\`\`
-
-### git clone
-
-Clone an existing repository:
-
-\`\`\`bash
-git clone https://github.com/username/repository.git
-\`\`\`
-
-### git status
-
-Check the status of your working directory:
-
-\`\`\`bash
-git status
-\`\`\`
-
-### git add
-
-Stage changes for commit:
-
-\`\`\`bash
-# Stage a specific file
-git add filename.txt
-
-# Stage all changes
-git add .
-
-# Stage all changes including untracked files
-git add -A
-\`\`\`
-
-### git commit
-
-Commit your staged changes:
-
-\`\`\`bash
-# Commit with a message
-git commit -m "Add new feature"
-
-# Amend the previous commit
-git commit --amend
-\`\`\`
-
-### git push
-
-Push your commits to a remote repository:
-
-\`\`\`bash
-# Push to the default remote (origin) and branch (main)
-git push
-
-# Push to a specific branch
-git push origin branch-name
-\`\`\`
-
-### git pull
-
-Fetch and merge changes from a remote repository:
-
-\`\`\`bash
-git pull
-\`\`\`
-
-## Branching and Merging
-
-Branches allow you to develop features, fix bugs, or safely experiment with new ideas in a contained area of your repository.
-
-### git branch
-
-List, create, or delete branches:
-
-\`\`\`bash
-# List all branches
-git branch
-
-# Create a new branch
-git branch new-feature
-
-# Delete a branch
-git branch -d branch-name
-\`\`\`
-
-### git checkout
-
-Switch between branches:
-
-\`\`\`bash
-# Switch to an existing branch
-git checkout branch-name
-
-# Create and switch to a new branch
-git checkout -b new-branch
-\`\`\`
-
-### git merge
-
-Merge a branch into the current branch:
-
-\`\`\`bash
-# First switch to the target branch
-git checkout main
-
-# Then merge the feature branch
-git merge feature-branch
-\`\`\`
-
-## Resolving Conflicts
-
-Merge conflicts occur when Git can't automatically resolve differences between commits. When conflicts happen:
-
-1. Open the conflicted files and look for the conflict markers (\`<<<<<<<\`, \`=======\`, \`>>>>>>>\`)
-2. Edit the files to resolve the conflicts
-3. Remove the conflict markers
-4. Stage the resolved files: \`git add filename\`
-5. Commit the changes: \`git commit\`
-
-## Working with GitHub
-
-### Adding a Remote
-
-Connect your local repository to a remote on GitHub:
-
-\`\`\`bash
-git remote add origin https://github.com/username/repo.git
-\`\`\`
-
-### Forking and Pull Requests
-
-1. **Fork** a repository to create your own copy on GitHub
-2. **Clone** your forked repository to your local machine
-3. Create a **branch** for your changes
-4. Make your changes and **commit** them
-5. **Push** your changes to your fork on GitHub
-6. Create a **pull request** to propose your changes to the original repository
-
-## Advanced Tips
-
-### .gitignore
-
-Create a \`.gitignore\` file to specify files that Git should ignore:
-
-\`\`\`
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Packages #
-############
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
-
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-\`\`\`
-
-### Git Aliases
-
-Create shortcuts for commonly used Git commands:
-
-\`\`\`bash
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-\`\`\`
-
-Now you can use \`git co\` instead of \`git checkout\`.
-
-## Best Practices
-
-1. **Commit often**: Small, focused commits are easier to understand and revert if needed
-2. **Write meaningful commit messages**: Explain why the change was made, not just what changed
-3. **Use branches**: Keep your main branch stable and use feature branches for development
-4. **Review changes before committing**: Use \`git diff\` to see what you're about to commit
-5. **Sync regularly**: Pull changes from the remote repository frequently to avoid merge conflicts
-
-Mastering Git and GitHub takes practice, but it's an invaluable skill for any developer. Start with these basics and gradually explore more advanced features as you become more comfortable.
-                `
-            }
-        };
-
-        // Handle blog post navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if we're viewing a specific blog post
-            const hash = window.location.hash.substring(1);
-            
-            if (hash && blogPosts[hash]) {
-                showBlogPost(hash);
-            }
-            
-            // Add click event listeners to blog cards
-            document.querySelectorAll('.blog-card a[href^="#"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const postId = this.getAttribute('href').substring(1);
-                    window.location.hash = postId;
-                    showBlogPost(postId);
+        }
+
+        // Function to load and display blog posts
+        async function loadBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+
+            // Show loading indicator
+            container.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+
+            try {
+                const blogPosts = await getMarkdownFiles();
+
+                // Clear loading indicator
+                container.innerHTML = '';
+
+                // Create blog post cards
+                blogPosts.forEach(post => {
+                    const blogCard = document.createElement('article');
+                    blogCard.className = 'blog-card';
+                    blogCard.innerHTML = `
+                        <div class="blog-image">
+                            <img src="${post.image}" alt="${post.title}" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'">
+                        </div>
+                        <div class="blog-content">
+                            <h2>${post.title}</h2>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> ${post.date}</span>
+                                <span><i class="far fa-clock"></i> ${post.readTime}</span>
+                            </div>
+                            <p>${getPostExcerpt(post.id)}</p>
+                            <div class="blog-tags">
+                                ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                            </div>
+                            <a href="#${post.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    `;
+
+                    // Add click event to load the full post
+                    blogCard.querySelector('.read-more').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.location.hash = post.id;
+                        loadBlogPost(post);
+                    });
+
+                    container.appendChild(blogCard);
                 });
-            });
-        });
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                container.innerHTML = '<p>Error loading blog posts. Please check your markdown folder.</p>';
+            }
+        }
 
-        // Function to display a blog post
-        function showBlogPost(postId) {
-            if (blogPosts[postId]) {
-                const post = blogPosts[postId];
-                
-                // Update the page title
-                document.title = `${post.title} - Pratham's Blog`;
-                
-                // Update the post title
-                document.getElementById('post-title').textContent = post.title;
-                
-                // Update the post content with rendered markdown
-                document.getElementById('post-content').innerHTML = marked.parse(post.content);
-                
-                // Update the metadata
-                const postMeta = document.querySelector('.post-meta');
-                postMeta.innerHTML = `
-                    <span><i class="far fa-calendar"></i> ${post.date}</span>
-                    <span><i class="far fa-clock"></i> ${post.readTime}</span>
-                    <span><i class="far fa-user"></i> Pratham</span>
-                `;
-                
-                // Update tags
-                const postTags = document.querySelector('.post-tags');
-                postTags.innerHTML = post.tags.map(tag => 
-                    `<span class="blog-tag">${tag}</span>`
-                ).join('');
-                
-                // Switch to the blog detail view
-                document.getElementById('blog-listing').style.display = 'none';
-                document.getElementById('blog-detail').style.display = 'block';
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-                
+        // Function to get post excerpt (in a real app, this would come from the markdown file)
+        function getPostExcerpt(postId) {
+            const excerpts = {
+                "c-programming": "Learn the fundamentals of C programming language, from basic syntax to memory management. Perfect for beginners starting their programming journey.",
+                "linux-commands": "Discover the most useful Linux commands that every developer should know to improve productivity and efficiency in their workflow.",
+                "git-mastery": "A comprehensive guide to version control with Git and how to effectively use GitHub for collaboration and project management."
+            };
+
+            return excerpts[postId] || "Read this informative blog post about technology and programming.";
+        }
+
+        // Function to load a specific blog post
+        async function loadBlogPost(post) {
+            // Show loading state
+            document.getElementById('blog-listing').style.display = 'none';
+            document.getElementById('blog-detail').style.display = 'block';
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-date').textContent = post.date;
+            document.getElementById('post-read-time').textContent = post.readTime;
+
+            // Update tags
+            const tagsContainer = document.getElementById('post-tags');
+            tagsContainer.innerHTML = post.tags.map(tag =>
+                `<span class="blog-tag">${tag}</span>`
+            ).join('');
+
+            // Fetch and render markdown content
+            try {
+                const response = await fetch(post.markdownFile);
+                if (!response.ok) {
+                    throw new Error('Markdown file not found');
+                }
+
+                const markdown = await response.text();
+                document.getElementById('post-content').innerHTML = marked.parse(markdown);
+
                 // Highlight code blocks
                 document.querySelectorAll('pre code').forEach((block) => {
                     hljs.highlightElement(block);
                 });
+            } catch (error) {
+                console.error('Error loading markdown:', error);
+                document.getElementById('post-content').innerHTML = `
+                    <p>Sorry, there was an error loading this blog post.</p>
+                    <p>Please make sure the file <strong>${post.markdownFile}</strong> exists in your markdown folder.</p>
+                    <p>Error details: ${error.message}</p>
+                `;
             }
         }
 
-        // Handle browser back button
-        window.addEventListener('hashchange', function() {
+        // Handle page load and hash changes
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Load blog posts
+            await loadBlogPosts();
+
+            // Check if we're viewing a specific blog post
             const hash = window.location.hash.substring(1);
-            
-            if (hash && blogPosts[hash]) {
-                showBlogPost(hash);
+
+            if (hash) {
+                try {
+                    const blogPosts = await getMarkdownFiles();
+                    const post = blogPosts.find(p => p.id === hash);
+                    if (post) {
+                        loadBlogPost(post);
+                    }
+                } catch (error) {
+                    console.error('Error loading blog post:', error);
+                }
+            }
+
+            // Add click event listeners to blog cards (delegation)
+            document.getElementById('blog-posts-container').addEventListener('click', function (e) {
+                if (e.target.closest('.read-more')) {
+                    e.preventDefault();
+                    const link = e.target.closest('.read-more');
+                    const postId = link.getAttribute('href').substring(1);
+                    window.location.hash = postId;
+
+                    // Find the post and load it
+                    getMarkdownFiles().then(blogPosts => {
+                        const post = blogPosts.find(p => p.id === postId);
+                        if (post) {
+                            loadBlogPost(post);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Handle browser back button
+        window.addEventListener('hashchange', async function () {
+            const hash = window.location.hash.substring(1);
+
+            if (hash) {
+                try {
+                    const blogPosts = await getMarkdownFiles();
+                    const post = blogPosts.find(p => p.id === hash);
+                    if (post) {
+                        loadBlogPost(post);
+                    }
+                } catch (error) {
+                    console.error('Error loading blog post:', error);
+                }
             } else {
                 // Switch back to blog listing
                 document.getElementById('blog-detail').style.display = 'none';

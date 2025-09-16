@@ -1,0 +1,29 @@
+[
+    {
+        "id": "Vim/Neovim Basics",
+        "title": "Vim/Neovim Basics: A Beginner's Guide to Efficient Text Editing",
+        "date": "Sep 16, 2025",
+        "readTime": "5 min read",
+        "tags": ["Vim", "Neovim", "Text Editing", "Efficiency"],
+        "image": "images/c-programming.jpg",
+        "markdownFile": "markdown/VIM-cheatsheet.md"
+    },
+    {
+        "id": "linux-commands",
+        "title": "Linux Command Line Cheat Sheet: Essential Commands for Everyday Use",
+        "date": "Sep 16, 2025",
+        "readTime": "7 min read",
+        "tags": ["Linux", "Terminal", "Productivity"],
+        "image": "images/linux-commands.jpg",
+        "markdownFile": "markdown/Linux-cheatsheet.md"
+    },
+    {
+        "id": "git-mastery",
+        "title": "Git Cheat Sheet: Mastering Version Control",
+        "date": "July 3, 2023",
+        "readTime": "7 min read",
+        "tags": ["Git", "D-VCS", "Version Control", "Project Management"],
+        "image": "images/linux-commands.jpg",
+        "markdownFile": "markdown/Git-cheatsheet.md"
+    }
+]
