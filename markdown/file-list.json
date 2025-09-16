@@ -5,7 +5,7 @@
         "date": "Sep 16, 2025",
         "readTime": "5 min read",
         "tags": ["Vim", "Neovim", "Text Editing", "Efficiency"],
-        "image": "images/c-programming.jpg",
+        "image": "https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/nvim-vim.png",
         "markdownFile": "markdown/VIM-cheatsheet.md"
     },
     {
@@ -14,7 +14,7 @@
         "date": "Sep 16, 2025",
         "readTime": "7 min read",
         "tags": ["Linux", "Terminal", "Productivity"],
-        "image": "images/linux-commands.jpg",
+        "image": "https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/linux.jpeg",
         "markdownFile": "markdown/Linux-cheatsheet.md"
     },
     {
@@ -23,7 +23,7 @@
         "date": "July 3, 2023",
         "readTime": "7 min read",
         "tags": ["Git", "D-VCS", "Version Control", "Project Management"],
-        "image": "images/linux-commands.jpg",
+        "image": "https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/git.png",
         "markdownFile": "markdown/Git-cheatsheet.md"
     }
 ]
