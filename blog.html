@@ -46,6 +46,22 @@
                 <h1>My Blog</h1>
                 <p>Thoughts, tutorials, and insights on technology, programming, and my learning journey</p>
             </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search blog posts...">
+                    <button class="search-button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="searchResultsInfo" class="search-results-info" style="display: none;">
+                Showing results for: <span id="searchQuery"></span>
+            </div>
+
+            <div class="blog-grid" id="blog-posts-container">
 
             <div class="blog-grid" id="blog-posts-container">
                 <!-- Blog posts will be loaded here dynamically -->
@@ -91,7 +107,7 @@
                 <a href="index.html#contact">Contact</a>
                 <a href="blog.html">Blog</a>
             </div> -->
-            <p class="copyright">&copy; 2023 Pratham. All rights reserved.</p>
+            <p class="copyright">&copy; 2025 dr460n. All rights reserved.</p>
         </div>
     </footer>
 
@@ -198,7 +214,7 @@
                         {
                             "id": "git-mastery",
                             "title": "Git Cheat Sheet: Mastering Version Control",
-                            "date": "July 3, 2023",
+                            "date": "Sep 16, 2025",
                             "readTime": "7 min read",
                             "tags": ["Git", "D-VCS", "Version Control", "Project Management"],
                             "image": "https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/git.png",
@@ -346,20 +362,83 @@
                 }
             });
         });
+        
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const searchQueryElement = document.getElementById('searchQuery');
+            
+            // Function to perform search
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                
+                if (query === '') {
+                    // If search is empty, show all posts
+                    searchResultsInfo.style.display = 'none';
+                    loadBlogPosts(allPosts);
+                    return;
+                }
+                
+                // Filter posts based on search query
+                const filteredPosts = allPosts.filter(post => {
+                    // Search in title
+                    if (post.title.toLowerCase().includes(query)) return true;
+                    
+                    // Search in tags
+                    if (post.tags.some(tag => tag.toLowerCase().includes(query))) return true;
+                    
+                    // Search in content
+                    if (post.content.toLowerCase().includes(query)) return true;
+                    
+                    return false;
+                });
+                
+                // Show search results info
+                searchResultsInfo.style.display = 'block';
+                searchQueryElement.textContent = `"${query}"`;
+                
+                // Display filtered posts
+                loadBlogPosts(filteredPosts);
+            }
+            
+            // Event listeners for search
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        // Handle page load and hash changes
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load blog posts
+            loadBlogPosts();
+            
+            // Setup search functionality
+            setupSearch();
+            
+            // Check if we're viewing a specific blog post
+            const hash = window.location.hash.substring(1);
+            
+            if (hash) {
+                const post = allPosts.find(p => p.id === hash);
+                if (post) {
+                    loadBlogPost(post);
+                }
+            }
+        });
 
         // Handle browser back button
-        window.addEventListener('hashchange', async function () {
+        window.addEventListener('hashchange', async function() {
             const hash = window.location.hash.substring(1);
-
+            
             if (hash) {
-                try {
-                    const blogPosts = await getMarkdownFiles();
-                    const post = blogPosts.find(p => p.id === hash);
-                    if (post) {
-                        loadBlogPost(post);
-                    }
-                } catch (error) {
-                    console.error('Error loading blog post:', error);
+                const post = allPosts.find(p => p.id === hash);
+                if (post) {
+                    loadBlogPost(post);
                 }
             } else {
                 // Switch back to blog listing
