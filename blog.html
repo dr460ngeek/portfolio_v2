@@ -20,7 +20,8 @@
         <nav>
             <div class="nav-container">
                 <a href="index.html" class="logo-container">
-                    <img class="nav-logo" src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/logo.png" alt="Pratham's Logo"
+                    <!-- ADD YOUR LOGO IMAGE PATH HERE -->
+                    <img class="nav-logo" src="https://raw.githubusercontent.com/dr460ngeek/portfolio_v2/refs/heads/main/images/Profile.jpeg" alt="Pratham's Logo"
                         onerror="this.style.display='none'">
                     <h1>Pratham's <span>Blog.</span></h1>
                 </a>
@@ -43,8 +44,31 @@
         <!-- Blog Listing View -->
         <section id="blog-listing">
             <div class="blog-header">
-                <h1>My Blogs</h1>
+                <h1>My Blog</h1>
                 <p>Thoughts, tutorials, and insights on technology, programming, and my learning journey</p>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search blog posts...">
+                    <button class="search-button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="searchResultsInfo" class="search-results-info" style="display: none;">
+                Showing results for: <span id="searchQuery"></span>
+            </div>
+
+            <div class="blog-grid" id="blog-posts-container">
+
+            <div class="blog-grid" id="blog-posts-container">
+                <!-- Blog posts will be loaded here dynamically -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
             </div>
         </section>
 
