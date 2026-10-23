@@ -860,6 +860,10 @@ section h2::after {
     margin: 0;
 }
 
+.social-item span {
+    font-size: 0.8rem;
+}
+
 /* Footer */
 footer {
     background: var(--gradient);
